@@ -12,6 +12,7 @@ const {
   listCategories,
   listBySearch,
   photo,
+  listSearch,
 } = require("../controllers/productController");
 const {
   requireSignin,
@@ -38,6 +39,9 @@ router.put(
   isAdmin,
   update
 );
+
+// Product List by Search
+router.get("/products/search", listSearch);
 
 router.get("/products", list);
 router.get("/products/related/:productId", listRelated);
