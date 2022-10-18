@@ -24,7 +24,8 @@ const OrderSchema = new mongoose.Schema(
             enum: ["Not processed", "Processing", "Shipped", "Delivered", "Cancelled"]
         },
         updated: Date,
-        user: { type: ObjectId, ref: "User" }
+        user: { type: ObjectId, ref: "User" },
+        address: String
     },
     { timestamps: true }
 );
