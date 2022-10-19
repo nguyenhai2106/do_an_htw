@@ -49,7 +49,7 @@ exports.listReview = (req, res) => {
     product: req.product._id,
   })
     .limit(limit)
-    .populate("product", "_id name")
+    .populate("user", "_id name")
     .exec((err, reviews) => {
       if (err) {
         return res.status(400).json({
