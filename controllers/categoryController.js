@@ -10,7 +10,7 @@ exports.create = (req, res) => {
       });
     }
     res.json({ data });
-  }); 
+  });
 };
 
 exports.categoryById = (req, res, next, id) => {
