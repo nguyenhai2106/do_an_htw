@@ -61,3 +61,25 @@ exports.updateOrderStatus = (req, res) => {
     }
   );
 };
+
+exports.listOrderPagination = (req, res) => {
+  let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+  let skip = parseInt(req.body.skip);
+
+  Order.find()
+    .populate("user", "_id name address")
+    .sort("-created")
+    .skip(skip)
+    .limit(limit)
+    .exec((err, data) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Order not found",
+        });
+      }
+      res.json({
+        size: data.length,
+        data,
+      });
+    });
+};

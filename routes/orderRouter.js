@@ -16,6 +16,7 @@ const {
   getStatusValues,
   updateOrderStatus,
   orderById,
+  listOrderPagination
 } = require("../controllers/orderController");
 const { decreaseQuantity } = require("../controllers/productController");
 
@@ -26,6 +27,11 @@ router.post(
   addOrderUserHistorys,
   decreaseQuantity,
   create
+);
+
+router.post(
+  "/order/pagination",
+  listOrderPagination
 );
 
 router.get("/order/list/:userId", requireSignin, isAuth, isAdmin, listOrders);
